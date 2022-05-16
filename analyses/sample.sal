@@ -1,0 +1,16 @@
+{{
+  config( unique_key='order_id'
+    post_hook={
+      "sql": "ALTER TABLE {{this}}
+ADD CONSTRAINT PK_Name_of_University PRIMARY KEY CLUSTERED (Name_of_University);"
+    }
+  )
+}}
+
+select *
+from Admission_data
+{% if is_incremental() %}
+  -- this filter will only be applied on an incremental run
+  where DateInserted >= (select max(DateInserted) from Admission_data)
+
+{% endif %}

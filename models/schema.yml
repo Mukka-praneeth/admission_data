@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: stg_Admission_data
+  - name: stg_Ad_data
     description: "A starter dbt model"
     columns:
       - name: Name_of_University
