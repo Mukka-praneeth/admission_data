@@ -1,0 +1,14 @@
+config:
+  use_colors: True
+Admission_data:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: dbt.database.windows.net
+      port: 1433
+      schema: dbo
+      user: "{{ env_var('Dbt_user')}}"
+      password: "{{ env_var('Dbt_Password')}}"
+      database: working
